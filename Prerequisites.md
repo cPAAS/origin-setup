@@ -1,5 +1,3 @@
-# OpenShift Origin setup
-
 ## Prerequisites
 
 #####Base OS#####
@@ -37,16 +35,10 @@ create a wildcard DNS entry for your apps and points to the public IP address of
 *.ceyes.os (192.168.0.141)
 ```
 
-#####SSH access#####
+#####Ports#####
 
-on master
+on masters
 ```
-ssh-keygen
-touch ~/.ssh/authorized_keys
-chmod 600 ~/.ssh/authorized_keys
-cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
-ssh-copy-id -i ~/.ssh/id_rsa.pub node1.ceyes.os
-
 sudo vi /etc/sysconfig/iptables
   -A INPUT -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
   -A INPUT -p tcp -m state --state NEW -m tcp --dport 8443 -j ACCEPT
